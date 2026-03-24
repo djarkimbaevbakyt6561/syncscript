@@ -1,0 +1,25 @@
+export type EditorStateType = {
+  isBold: boolean;
+  canBold: boolean;
+  isItalic: boolean;
+  canItalic: boolean;
+  isStrike: boolean;
+  canStrike: boolean;
+  isCode: boolean;
+  canCode: boolean;
+  canClearMarks: boolean;
+  isParagraph: boolean;
+  isHeading1: boolean;
+  isHeading2: boolean;
+  isHeading3: boolean;
+  isBulletList: boolean;
+  isOrderedList: boolean;
+  isCodeBlock: boolean;
+  isBlockquote: boolean;
+  canUndo: boolean;
+  canRedo: boolean;
+  isTextAlignLeft: boolean;
+  isTextAlignCenter: boolean;
+  isTextAlignRight: boolean;
+  isTextAlignJustify: boolean;
+};

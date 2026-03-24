@@ -1,0 +1,27 @@
+import { EditorStateType } from "./types";
+
+export const DEFAULT_STATE: EditorStateType = {
+  isBold: false,
+  canBold: false,
+  isItalic: false,
+  canItalic: false,
+  isStrike: false,
+  canStrike: false,
+  isCode: false,
+  canCode: false,
+  canClearMarks: false,
+  isParagraph: true,
+  isHeading1: false,
+  isHeading2: false,
+  isHeading3: false,
+  isBulletList: false,
+  isOrderedList: false,
+  isCodeBlock: false,
+  isBlockquote: false,
+  canUndo: false,
+  canRedo: false,
+  isTextAlignLeft: true,
+  isTextAlignCenter: false,
+  isTextAlignRight: false,
+  isTextAlignJustify: false,
+};

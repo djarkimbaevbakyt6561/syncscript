@@ -10,7 +10,16 @@ const nextConfig: NextConfig = {
       },
     },
   },
-
+ images: {
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "liveblocks.io",
+      port: "",
+      pathname: "/avatars/**",
+    },
+  ],
+ },
   // Configuration for Webpack (used during production build with `next build`)
   webpack(config) {
     // Grab the existing rule that handles SVG imports

@@ -142,6 +142,29 @@
   }
 }
 
+.collaboration-carets__caret {
+  word-break: normal;
+  pointer-events: none;
+  border-inline: 1px solid #0d0d0d;
+  position: relative;
+}
+
+.collaboration-carets__label {
+  color: var(--primary);
+  white-space: nowrap;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  border-radius: 6px;
+  border-end-start-radius: 0;
+  padding: 2px 6px;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  inset-block-start: -1.4em;
+  inset-inline-start: -1px;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
