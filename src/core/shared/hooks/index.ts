@@ -1,1 +1,1 @@
-export {useAccurateIsSelectionEmpty} from "./useAccurateIsSelectionEmpty";
+export {useFloatingContainer} from "./useFloatingContainer";

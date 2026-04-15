@@ -1,25 +1,54 @@
 .loader {
-  color: var(--primary-gold);
-  width: 4px;
+  --dot-loader-size: 30px;
+  --dot-loader-offset: 66.6667%;
+  --dot-loader-stroke: 3px;
+  --dot-loader-color: #fff;
+  --dot-loader-duration: 2.5s;
+  --dot-loader-delay: -1.25s;
+
+  width: var(--dot-loader-size);
+  height: auto;
   aspect-ratio: 1;
-  border-radius: 50%;
-  box-shadow:
-    16px 0 0 5px,
-    32px 0 0 2px,
-    48px 0 0 0;
-  animation: l21 0.5s infinite alternate linear;
+  position: relative;
+  display: inline-block;
 }
-@keyframes l21 {
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 var(--dot-loader-stroke) inset var(--dot-loader-color);
+  animation: l4 var(--dot-loader-duration) infinite;
+}
+.loader:after {
+  animation-delay: var(--dot-loader-delay);
+}
+@keyframes l4 {
+  0% {
+    inset: 0 var(--dot-loader-offset) var(--dot-loader-offset) 0;
+  }
+  12.5% {
+    inset: 0 var(--dot-loader-offset) 0 0;
+  }
+  25% {
+    inset: var(--dot-loader-offset) var(--dot-loader-offset) 0 0;
+  }
+  37.5% {
+    inset: var(--dot-loader-offset) 0 0 0;
+  }
   50% {
-    box-shadow:
-      16px 0 0 2px,
-      32px 0 0 5px,
-      48px 0 0 2px;
+    inset: var(--dot-loader-offset) 0 0 var(--dot-loader-offset);
+  }
+  62.5% {
+    inset: 0 0 0 var(--dot-loader-offset);
+  }
+  75% {
+    inset: 0 0 var(--dot-loader-offset) var(--dot-loader-offset);
+  }
+  87.5% {
+    inset: 0 0 var(--dot-loader-offset) 0;
   }
   100% {
-    box-shadow:
-      16px 0 0 0px,
-      32px 0 0 2px,
-      48px 0 0 0px;
+    inset: 0 var(--dot-loader-offset) var(--dot-loader-offset) 0;
   }
 }

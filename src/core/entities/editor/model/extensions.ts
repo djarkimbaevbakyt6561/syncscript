@@ -1,22 +1,24 @@
 import StarterKit from "@tiptap/starter-kit";
-import {Selection} from "@tiptap/extensions";
+import {Placeholder, Selection} from "@tiptap/extensions";
 import TextAlign from "@tiptap/extension-text-align";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
-import {ImageDrop} from "../ui/image-drop/ImageDrop";
 
 export const getEditorExtensions = () => {
   return [
     StarterKit.configure({
       link: false,
     }),
-    ImageDrop,
     Image,
     TextAlign.configure({
       types: ["heading", "paragraph"],
     }),
     Selection.configure({
       className: "selection",
+    }),
+    Placeholder.configure({
+      placeholder: "Start writing…",
+      emptyEditorClass: "tiptap-empty",
     }),
     Link.configure({
       openOnClick: false,

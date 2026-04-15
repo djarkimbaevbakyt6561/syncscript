@@ -3,6 +3,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
+  Input,
   MenuButton,
 } from "@/src/core/shared/ui";
 import {LinkButton} from "@/src/core/shared/ui";
@@ -46,8 +47,8 @@ export const LinkDropdown = ({editor}: {editor: Editor}) => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="flex items-center p-2 gap-1">
-        <input
-          className="py-1.5 px-2 text-sm bg-secondary rounded-sm outline-none focus:ring-1 focus:ring-secondary-gold"
+        <Input
+          className="py-1.5 px-2 text-sm bg-secondary"
           placeholder="https://..."
           value={url}
           onChange={(e) => setUrl(e.target.value)}

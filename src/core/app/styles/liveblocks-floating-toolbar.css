@@ -1,0 +1,77 @@
+/* Liveblocks FloatingToolbar (TipTap floating formatting toolbar) */
+:where(.lb-composer-floating-toolbar) {
+  position: relative;
+  z-index: 10;
+  padding: 6px;
+  gap: 4px;
+  border-radius: calc(var(--radius) + 2px);
+  border: 1px solid var(--border-luxe);
+  background: var(--background);
+  box-shadow:
+    0 24px 60px oklch(0 0 0 / 0.35),
+    0 10px 24px oklch(0 0 0 / 0.22);
+  backdrop-filter: blur(10px);
+
+  scrollbar-width: none; /* Firefox */
+}
+
+:where(.lb-composer-floating-toolbar::-webkit-scrollbar) {
+  display: none; /* WebKit */
+}
+
+:where(.lb-composer-floating-toolbar .lb-button[data-variant="toolbar"]) {
+  width: 34px;
+  height: 34px;
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid transparent;
+  color: color-mix(in oklch, var(--foreground) 78%, transparent);
+  display: grid;
+  place-items: center;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease,
+    transform 120ms ease;
+}
+
+:where(.lb-composer-floating-toolbar .lb-button[data-variant="toolbar"]:hover) {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+:where(
+  .lb-composer-floating-toolbar .lb-button[data-variant="toolbar"]:active
+) {
+  transform: translateY(1px);
+}
+
+:where(
+  .lb-composer-floating-toolbar .lb-button[data-variant="toolbar"]:focus-visible
+) {
+  outline: 2px solid color-mix(in oklch, var(--primary-gold) 60%, transparent);
+  outline-offset: 2px;
+}
+
+:where(
+  .lb-composer-floating-toolbar
+    .lb-button[data-variant="toolbar"][aria-pressed="true"]
+) {
+  background: color-mix(in oklch, var(--primary-gold) 10%, var(--accent));
+  border-color: var(--primary-gold);
+  color: var(--primary-gold);
+}
+
+:where(.lb-composer-floating-toolbar .lb-icon-container) {
+  display: grid;
+  place-items: center;
+}
+
+:where(.lb-composer-floating-toolbar .lb-icon) {
+  width: 18px;
+  height: 18px;
+}
+
+/* Target the tooltip specifically */
+.lb-tooltip {
+  display: none;
+}

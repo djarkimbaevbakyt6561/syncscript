@@ -1,5 +1,5 @@
 import {DOMSerializer} from "@tiptap/pm/model";
-import {useCallback, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useCallback, useLayoutEffect, useRef, useState} from "react";
 import type {Editor} from "@tiptap/react";
 
 export const useFloatingContainer = (editor: Editor, isOpen: boolean) => {
@@ -17,8 +17,6 @@ export const useFloatingContainer = (editor: Editor, isOpen: boolean) => {
 
   const computeAnchorAndSelection = useCallback(() => {
     const {from, to, empty} = editor.state.selection;
-    if (empty) return null;
-
     const fromCoords = editor.view.coordsAtPos(from);
     const toCoords = editor.view.coordsAtPos(to);
 
@@ -28,6 +26,8 @@ export const useFloatingContainer = (editor: Editor, isOpen: boolean) => {
       left: Math.min(fromCoords.left, toCoords.left),
       right: Math.max(fromCoords.right, toCoords.right),
     };
+
+    if (empty) return {rect, html: ""};
 
     const slice = editor.state.doc.slice(from, to);
     const serializer = DOMSerializer.fromSchema(editor.schema);
@@ -39,7 +39,7 @@ export const useFloatingContainer = (editor: Editor, isOpen: boolean) => {
   }, [editor]);
 
   const openPanel = useCallback(() => {
-    const result = computeAnchorAndSelection();
+    const result = computeAnchorAndSelection(); 
     if (!result) return;
 
     setAnchorRect(result.rect);
@@ -52,17 +52,16 @@ export const useFloatingContainer = (editor: Editor, isOpen: boolean) => {
     setAnchorRect(null);
     setPanelPos(null);
   }, []);
+
   // Keep the panel positioned under the current selection while open.
   const update = useCallback(() => {
     const result = computeAnchorAndSelection();
-    if (!result) {
-      closePanel();
-      return;
-    }
+    if (!result) return;
+
     setAnchorRect(result.rect);
     setPanelPos({top: result.rect.bottom + 8, left: result.rect.left});
     return result;
-  }, [computeAnchorAndSelection, closePanel]);
+  }, [computeAnchorAndSelection]);
 
   // Clamp/flip after we know panel dimensions.
   useLayoutEffect(() => {
@@ -86,30 +85,6 @@ export const useFloatingContainer = (editor: Editor, isOpen: boolean) => {
 
     setPanelPos({top, left});
   }, [anchorRect, isOpen]);
-
-  // Close on outside click / Escape.
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closePanel();
-    };
-
-    const onPointerDown = (e: PointerEvent) => {
-      const target = e.target as Node | null;
-      if (!target) return;
-      if (panelRef.current?.contains(target)) return;
-      if (triggerWrapRef.current?.contains(target)) return;
-      closePanel();
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    document.addEventListener("pointerdown", onPointerDown);
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-      document.removeEventListener("pointerdown", onPointerDown);
-    };
-  }, [closePanel, isOpen]);
 
   return {
     isOpen,

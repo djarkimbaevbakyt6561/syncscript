@@ -14,7 +14,13 @@ export function Room({children}: {children: ReactNode}) {
         cursor: null,
       }}
     >
-      <ClientSideSuspense fallback={<DotLoader />}>
+      <ClientSideSuspense
+        fallback={
+          <div className="my-10 w-full flex justify-center">
+            <DotLoader />
+          </div>
+        }
+      >
         {children}
       </ClientSideSuspense>
     </RoomProvider>

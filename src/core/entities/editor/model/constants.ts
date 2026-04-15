@@ -1,4 +1,4 @@
-import { EditorStateType } from "./types";
+import {EditorStateType} from "./types";
 
 export const DEFAULT_STATE: EditorStateType = {
   isBold: false,
