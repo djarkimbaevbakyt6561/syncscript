@@ -10,8 +10,9 @@ import {DEFAULT_STATE, toolBarStateSelector} from "@/src/core/entities/editor";
 import {getToolbarGroups} from "../model/commands";
 import {ToolBarItemType} from "../model/types";
 import {ImageDropdown} from "./tools/ImageDropdown";
+import { cn } from "@/src/core/shared/lib/utils";
 
-export function ToolBar() {
+export function ToolBar({className}: {className?: string}) {
   const {editor} = useTiptap();
   const editorState = useTiptapState(toolBarStateSelector) ?? DEFAULT_STATE;
   if (!editor) {
@@ -33,8 +34,8 @@ export function ToolBar() {
     ));
 
   return (
-    <div className="no-scrollbar overflow-x-auto overflow-y-hidden">
-      <div className="flex w-max items-center gap-2 whitespace-nowrap py-1 pr-2">
+    <div className={cn("no-scrollbar overflow-x-auto overflow-y-hidden", className)}>
+      <div className="flex w-max items-center gap-2 whitespace-nowrap pr-2">
         <div className="flex gap-1 border-r pr-2">
           <AIDropdown editor={editor} />
         </div>

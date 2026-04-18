@@ -16,7 +16,7 @@ interface MenuButtonProps extends ComponentPropsWithoutRef<"button"> {
 }
 
 const button = tv({
-  base: "inline-flex items-center justify-center px-2 py-2 h-min text-sm rounded-md cursor-pointer transition-colors duration-75 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none outline-none ",
+  base: "inline-flex items-center justify-center px-2 min-h-[36px] h-min text-sm rounded-md cursor-pointer transition-colors duration-75 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none outline-none ",
   variants: {
     color: {
       primary:
