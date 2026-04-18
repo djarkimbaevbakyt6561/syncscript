@@ -16,11 +16,11 @@ const button = tv({
 export const ShareButton = () => {
   const [isCopied, setIsCopied] = useState(false);
   const {base, stack, item} = button();
-  const email = "dzharkymbaev.bakyt@gmail.com";
+  const link = "https://syncscript-baha.vercel.app/editor?exampleId=1";
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(email);
+      await navigator.clipboard.writeText(link);
     } catch {}
     setIsCopied(true);
   };
