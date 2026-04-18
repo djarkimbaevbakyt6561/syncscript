@@ -40,7 +40,7 @@ Custom Tiptap extensions for image management.
 
 ## 🛠️ Tech Stack
 - **Framework:** Next.js 16 (App Router) & React 19.
-- **Editor Engine:** Tiptap (ProseMirror-based) with custom React NodeViews.
+- **Editor Engine:** Tiptap (ProseMirror-based).
 - **Real-Time Infrastructure:** Liveblocks (WebSockets + Storage).
 - **Styling:** Tailwind CSS + OKLCH Color Engine.
 - **AI Integration:** Vercel AI SDK (Streaming).
